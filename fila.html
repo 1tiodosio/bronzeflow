@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" content="BronzeFlow: registre as chegadas do dia e os pagamentos do seu espaço de bronzeamento.">
+
+  <title>Chegadas de hoje | BronzeFlow</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600&display=swap">
+
+  <meta name="theme-color" content="#f6f2ec">
+
+  <link rel="stylesheet" href="style.css">
+
+  <script src="dados.js" defer></script>
+  <script src="fila.js" defer></script>
+</head>
+
+<body>
+
+  <a class="link-pular" href="#conteudo">Pular para o conteúdo</a>
+
+  <header class="cabecalho">
+
+    <div class="container cabecalho__barra">
+
+      <a class="marca" href="index.html">BronzeFlow</a>
+
+      <nav class="menu" aria-label="Menu principal">
+        <ul class="menu__lista">
+          <li><a class="menu__link" href="index.html">Início</a></li>
+          <li><a class="menu__link" href="fila.html" aria-current="page">Fila</a></li>
+          <li><a class="menu__link" href="historico.html">Histórico</a></li>
+          <li><a class="menu__link" href="sobre.html">Sobre</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="container pagina-titulo">
+      <h1 class="pagina-titulo__titulo">Chegadas de hoje</h1>
+      <p class="pagina-titulo__texto" id="data-hoje"></p>
+    </div>
+  </header>
+
+  <main id="conteudo">
+
+    <div class="container grade-fila">
+
+      <section class="bloco resumo" aria-labelledby="titulo-resumo">
+        <h2 id="titulo-resumo">Resumo do dia</h2>
+
+        <div class="resumo__contadores">
+          <div class="contador">
+            <strong class="contador__numero" id="contador-chegadas">0</strong>
+            <span class="contador__rotulo">Chegadas hoje</span>
+          </div>
+
+          <div class="contador">
+            <strong class="contador__numero" id="contador-pagas">0</strong>
+            <span class="contador__rotulo">Pagas</span>
+          </div>
+
+          <div class="contador">
+            <strong class="contador__numero" id="contador-pendentes">0</strong>
+            <span class="contador__rotulo">Pagar na saída</span>
+          </div>
+        </div>
+      </section>
+
+      <div class="coluna coluna--esquerda">
+
+      <section class="bloco fila" aria-labelledby="titulo-fila">
+        <h2 id="titulo-fila">Chegadas de hoje</h2>
+
+        <p class="lista__vazia" id="chegadas-vazia">Nenhuma chegada registrada hoje.</p>
+
+        <ul class="lista" id="lista-chegadas"></ul>
+
+        <a class="historico__link" href="historico.html">Ver dias anteriores e totais no Histórico</a>
+      </section>
+
+      </div>
+
+      <div class="coluna coluna--direita">
+
+      <section class="bloco registro" aria-labelledby="titulo-registro">
+        <h2 id="titulo-registro">Registrar chegada</h2>
+
+        <form id="form-chegada" novalidate>
+
+          <label class="campo__rotulo" for="campo-nome">Nome da cliente</label>
+
+          <input
+            class="campo__entrada"
+            type="text"
+            id="campo-nome"
+            name="nome"
+            maxlength="60"
+            autocomplete="off"
+            aria-describedby="erro-nome"
+          >
+
+          <p class="campo__erro" id="erro-nome" role="alert"></p>
+
+          <label class="campo__rotulo" for="campo-valor">Valor (R$)</label>
+          <input
+            class="campo__entrada"
+            type="text"
+            id="campo-valor"
+            name="valor"
+            inputmode="decimal"
+            autocomplete="off"
+            placeholder="Ex.: 35,50"
+            aria-describedby="erro-valor"
+          >
+          <p class="campo__erro" id="erro-valor" role="alert"></p>
+
+          <label class="campo__rotulo" for="campo-forma">Forma de pagamento</label>
+          <select
+            class="campo__entrada"
+            id="campo-forma"
+            name="forma"
+            aria-describedby="erro-forma"
+          >
+            <option value="">Escolha uma forma</option>
+          </select>
+          <p class="campo__erro" id="erro-forma" role="alert"></p>
+
+          <label class="campo__opcao" for="campo-pagar-saida">
+            <input type="checkbox" id="campo-pagar-saida" name="pagar-saida">
+            Pagar na saída (ainda não pago)
+          </label>
+
+          <button class="botao botao--principal" type="submit">Registrar chegada</button>
+        </form>
+      </section>
+
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="rodape">
+    <div class="container">
+      <p>Os dados ficam salvos apenas neste navegador e não são sincronizados com outros aparelhos.</p>
+    </div>
+  </footer>
+
+  <template id="molde-item-chegada">
+    <li class="item">
+
+      <div class="item__principal">
+        <strong class="item__nome"></strong>
+      </div>
+
+      <div class="item__detalhes">
+        <span class="item__chegada"></span>
+        <span class="item__pagamento"></span>
+      </div>
+
+      <div class="item__acoes">
+        <button class="botao botao--secundario item__botao-pagamento" type="button" hidden>Marcar como pago</button>
+      </div>
+    </li>
+  </template>
+
+</body>
+</html>
