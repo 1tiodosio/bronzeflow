@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="BronzeFlow: consulte as chegadas e os pagamentos de cada dia.">
+  <title>Histórico | BronzeFlow</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600&display=swap">
+  <meta name="theme-color" content="#f6f2ec">
+
+  <link rel="stylesheet" href="style.css">
+
+  <script src="dados.js" defer></script>
+  <script src="historico.js" defer></script>
+</head>
+
+<body>
+
+  <a class="link-pular" href="#conteudo">Pular para o conteúdo</a>
+
+  <header class="cabecalho">
+    <div class="container cabecalho__barra">
+
+      <a class="marca" href="index.html">BronzeFlow</a>
+
+      <nav class="menu" aria-label="Menu principal">
+        <ul class="menu__lista">
+          <li><a class="menu__link" href="index.html">Início</a></li>
+          <li><a class="menu__link" href="fila.html">Fila</a></li>
+          <li><a class="menu__link" href="historico.html" aria-current="page">Histórico</a></li>
+          <li><a class="menu__link" href="sobre.html">Sobre</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="container pagina-titulo">
+      <h1 class="pagina-titulo__titulo">Histórico</h1>
+      <p class="pagina-titulo__texto" id="dia-escolhido">Escolha um dia para ver as chegadas.</p>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <div class="container grade-historico">
+
+      <section class="bloco escolha" aria-labelledby="titulo-escolha">
+        <h2 id="titulo-escolha">Escolher o dia</h2>
+
+        <label class="campo__rotulo" for="campo-dia">Dia</label>
+
+        <select class="campo__entrada" id="campo-dia" name="dia" disabled>
+          <option value="">Nenhum dia registrado</option>
+        </select>
+      </section>
+
+      <section class="bloco resumo" aria-labelledby="titulo-resumo">
+        <h2 id="titulo-resumo">Resumo do dia</h2>
+
+        <div class="resumo__contadores">
+          <div class="contador">
+            <strong class="contador__numero" id="contador-chegadas">0</strong>
+            <span class="contador__rotulo">Chegadas</span>
+          </div>
+
+          <div class="contador">
+            <strong class="contador__numero" id="contador-pagas">0</strong>
+            <span class="contador__rotulo">Pagas</span>
+          </div>
+
+          <div class="contador">
+            <strong class="contador__numero" id="contador-pendentes">0</strong>
+            <span class="contador__rotulo">Pagar na saída</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="bloco pagamentos" aria-labelledby="titulo-pagamentos">
+        <h2 id="titulo-pagamentos">Pagamentos do dia</h2>
+
+        <dl class="totais">
+          <div class="totais__linha totais__linha--destaque">
+            <dt class="totais__rotulo">Recebido</dt>
+            <dd class="totais__valor" id="total-recebido">R$ 0,00</dd>
+          </div>
+
+          <div class="totais__linha">
+            <dt class="totais__rotulo">A receber na saída</dt>
+            <dd class="totais__valor" id="total-a-receber">R$ 0,00</dd>
+          </div>
+        </dl>
+
+        <dl class="totais" id="totais-formas"></dl>
+
+        <dl class="totais">
+          <div class="totais__linha">
+            <dt class="totais__rotulo">Conferidos no banco</dt>
+            <dd class="totais__valor" id="total-conferidos">0 de 0</dd>
+          </div>
+        </dl>
+
+        <p class="totais__nota">
+          Pix e cartões podem ser conferidos no banco. O dinheiro não entra
+          nessa conferência.
+        </p>
+      </section>
+
+      <section class="bloco clientes" aria-labelledby="titulo-clientes">
+        <h2 id="titulo-clientes">Clientes do dia</h2>
+
+        <p class="lista__vazia" id="clientes-vazia">Nenhuma cliente para mostrar.</p>
+
+        <ul class="lista" id="lista-clientes"></ul>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="rodape">
+    <div class="container">
+      <p>Os dados ficam salvos apenas neste navegador e não são sincronizados com outros aparelhos.</p>
+    </div>
+  </footer>
+
+  <template id="molde-item-cliente">
+    <li class="item">
+      <div class="item__principal">
+        <strong class="item__nome"></strong>
+      </div>
+      <div class="item__detalhes">
+        <span class="item__chegada"></span>
+        <span class="item__pagamento"></span>
+      </div>
+      <div class="item__acoes">
+        <button class="botao botao--secundario item__botao-pagamento" type="button" hidden>Marcar como pago</button>
+        <label class="campo__opcao item__conferido" hidden>
+          <input type="checkbox" class="item__caixa-conferido">
+          Conferido no banco
+        </label>
+      </div>
+    </li>
+  </template>
+
+  <template id="molde-linha-total">
+    <div class="totais__linha">
+      <dt class="totais__rotulo"></dt>
+      <dd class="totais__valor"></dd>
+    </div>
+  </template>
+
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<!--
+  =====================================================================
+  BRONZEFLOW - PÁGINA SOBRE (sobre.html)
+  =====================================================================
+  Apresenta o projeto: o problema que ele resolve, o objetivo, o público,
+  as tecnologias usadas e as limitações da primeira versão. O conteúdo
+  vem do documento de brainstorm do projeto.
+
+  É uma página só de texto, então não usa JavaScript.
+-->
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Conheça o projeto BronzeFlow: o problema, o objetivo, o público e as tecnologias usadas.">
+  <title>Sobre | BronzeFlow</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600&display=swap">
+
+  <meta name="theme-color" content="#f6f2ec">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <a class="link-pular" href="#conteudo">Pular para o conteúdo</a>
+
+  <!-- CABEÇALHO: menu igual ao das outras páginas; aqui o link atual é "Sobre". -->
+  <header class="cabecalho">
+    <div class="container cabecalho__barra">
+      <a class="marca" href="index.html">BronzeFlow</a>
+
+      <nav class="menu" aria-label="Menu principal">
+        <ul class="menu__lista">
+          <li><a class="menu__link" href="index.html">Início</a></li>
+          <li><a class="menu__link" href="fila.html">Fila</a></li>
+          <li><a class="menu__link" href="historico.html">Histórico</a></li>
+          <li><a class="menu__link" href="sobre.html" aria-current="page">Sobre</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="container pagina-titulo">
+      <h1 class="pagina-titulo__titulo">Sobre o projeto</h1>
+      <p class="pagina-titulo__texto">Uma aplicação web simples para organizar a fila de clientes de um espaço profissional de bronzeamento que atende por ordem de chegada.</p>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <!-- "grade-sobre" organiza os cartões em duas colunas no computador. -->
+    <div class="container grade-sobre">
+
+      <section class="bloco" aria-labelledby="titulo-problema">
+        <h2 class="bloco__titulo" id="titulo-problema">O problema</h2>
+        <p class="bloco__texto">
+          Em espaços que atendem por ordem de chegada, acompanhar manualmente quem
+          chegou primeiro, quem está aguardando e quais atendimentos foram concluídos
+          pode dificultar a visualização da fila.
+        </p>
+        <p class="bloco__texto">
+          O BronzeFlow não substitui o atendimento por ordem de chegada: ele torna
+          esse processo mais organizado e fácil de acompanhar.
+        </p>
+      </section>
+
+      <section class="bloco" aria-labelledby="titulo-objetivo">
+        <h2 class="bloco__titulo" id="titulo-objetivo">O objetivo</h2>
+        <p class="bloco__texto">
+          Criar uma ferramenta intuitiva que permita registrar a chegada das clientes,
+          organizar a fila automaticamente e acompanhar o andamento dos atendimentos
+          ao longo do dia.
+        </p>
+      </section>
+
+      <section class="bloco" aria-labelledby="titulo-publico">
+        <h2 class="bloco__titulo" id="titulo-publico">Para quem é</h2>
+        <p class="bloco__texto">
+          Profissionais autônomos e pequenos estabelecimentos de bronzeamento que
+          atendem clientes presencialmente por ordem de chegada.
+        </p>
+        <p class="bloco__texto">
+          A profissional pode usar a aplicação em um computador, tablet ou celular.
+        </p>
+      </section>
+
+      <section class="bloco" aria-labelledby="titulo-limites">
+        <h2 class="bloco__titulo" id="titulo-limites">Limitações</h2>
+        <p class="bloco__texto">
+          A primeira versão não tem login, banco de dados nem notificações externas.
+        </p>
+        <p class="bloco__texto">
+          Os registros ficam salvos no navegador utilizado, por isso não são
+          sincronizados entre aparelhos diferentes.
+        </p>
+        <p class="bloco__texto">
+          A estimativa de espera é aproximada e pode variar conforme a duração real
+          dos atendimentos.
+        </p>
+      </section>
+
+      <!--
+        Este cartão ocupa a largura toda ("bloco--largo") e usa a lista de
+        textos com 4 colunas, como na página inicial.
+      -->
+      <section class="bloco bloco--largo" aria-labelledby="titulo-tecnologias">
+        <h2 class="bloco__titulo" id="titulo-tecnologias">Tecnologias</h2>
+
+        <ul class="lista-texto lista-texto--quatro">
+          <li class="lista-texto__item">
+            <h3 class="lista-texto__titulo">HTML</h3>
+            <p class="lista-texto__texto">Estrutura das páginas, formulários, botões e lista de atendimentos.</p>
+          </li>
+
+          <li class="lista-texto__item">
+            <h3 class="lista-texto__titulo">CSS</h3>
+            <p class="lista-texto__texto">Layout, cores, identidade visual e adaptação para diferentes telas.</p>
+          </li>
+
+          <li class="lista-texto__item">
+            <h3 class="lista-texto__titulo">JavaScript</h3>
+            <p class="lista-texto__texto">Fila, ordenação, validação de formulários, status, cálculos e atualização da interface.</p>
+          </li>
+
+          <li class="lista-texto__item">
+            <h3 class="lista-texto__titulo">localStorage</h3>
+            <p class="lista-texto__texto">Guarda os dados no navegador, mesmo depois de atualizar a página.</p>
+          </li>
+        </ul>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="rodape">
+    <div class="container">
+      <p>Os dados ficam salvos apenas neste navegador e não são sincronizados com outros aparelhos.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
