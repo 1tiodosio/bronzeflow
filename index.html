@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<!--
+  =====================================================================
+  BRONZEFLOW - PÁGINA INÍCIO (index.html)
+  =====================================================================
+  Esta é a página de apresentação do sistema. Ela é a primeira que a
+  pessoa vê e funciona como "porta de entrada": explica o que o
+  BronzeFlow faz e leva a pessoa até a Fila.
+
+  Ela é uma página ESTÁTICA: não tem JavaScript. Todo o texto já está
+  escrito aqui no HTML. O visual vem do style.css (seção 10), o mesmo
+  arquivo usado pelas outras páginas.
+
+  Lembrete: "id" = nome único de um elemento; "class" = nome de um
+  grupo de elementos (o CSS usa as classes para estilizar).
+-->
+
+<!-- lang="pt-BR": o texto está em português do Brasil. -->
+<html lang="pt-BR">
+
+<head>
+  <!-- Alfabeto da página (UTF-8 permite acentos e "ç"). -->
+  <meta charset="UTF-8">
+
+  <!-- Ajusta a página à largura do celular. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Resumo da página, usado por buscadores quando ela é compartilhada. -->
+  <meta name="description" content="BronzeFlow: organize a fila de atendimentos do seu espaço de bronzeamento por ordem de chegada.">
+
+  <!-- Texto que aparece na aba do navegador. -->
+  <title>Início | BronzeFlow</title>
+
+  <!--
+    Fontes do Google Fonts (Fraunces para títulos e Inter para textos).
+    É o mesmo bloco da página Fila: as fontes precisam ser iguais em
+    todas as páginas para o site parecer uma coisa só.
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600&display=swap">
+
+  <!-- Cor da barra do navegador no celular, combinando com o fundo. -->
+  <meta name="theme-color" content="#f6f2ec">
+
+  <!-- Liga este HTML ao arquivo de estilos. -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!--
+    Link de acessibilidade: invisível até apertar Tab. Leva direto ao
+    conteúdo principal (o id="conteudo" mais abaixo).
+  -->
+  <a class="link-pular" href="#conteudo">Pular para o conteúdo</a>
+
+  <!--
+    ================================================================
+    CABEÇALHO DO SITE
+    A barra com a marca e o menu é IGUAL em todas as páginas. A única
+    diferença entre elas é qual link recebe aria-current="page": aqui
+    é o "Início".
+
+    Diferente das outras páginas, aqui NÃO há o bloco "pagina-titulo".
+    O título principal (h1) fica dentro do bloco de apresentação
+    (hero), logo abaixo, porque ele é o grande destaque da página.
+    ================================================================
+  -->
+  <header class="cabecalho">
+    <div class="container cabecalho__barra">
+
+      <a class="marca" href="index.html">BronzeFlow</a>
+
+      <nav class="menu" aria-label="Menu principal">
+        <ul class="menu__lista">
+          <li><a class="menu__link" href="index.html" aria-current="page">Início</a></li>
+          <li><a class="menu__link" href="fila.html">Fila</a></li>
+          <li><a class="menu__link" href="historico.html">Histórico</a></li>
+          <li><a class="menu__link" href="sobre.html">Sobre</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!--
+    ================================================================
+    CONTEÚDO PRINCIPAL
+    Os blocos ficam um embaixo do outro (o CSS usa "grid" no
+    main > .container, veja a seção 4 do style.css).
+    ================================================================
+  -->
+  <main id="conteudo">
+    <div class="container">
+
+      <!--
+        BLOCO 1: APRESENTAÇÃO (hero)
+        É o painel escuro grande, com os círculos de "sol" ao fundo.
+        As classes "bloco hero" juntas dão o formato de cartão (bloco)
+        e as cores escuras (hero).
+      -->
+      <section class="bloco hero" aria-labelledby="titulo-hero">
+        <!-- Frase curta acima do título, em maiúsculas (estilo definido no CSS). -->
+        <p class="hero__rotulo">Fila de atendimentos</p>
+
+        <!-- Único h1 da página: o título principal. -->
+        <h1 class="hero__titulo" id="titulo-hero">Cada cliente no seu turno.</h1>
+
+        <p class="hero__texto">
+          O BronzeFlow organiza a fila do seu espaço de bronzeamento por
+          ordem de chegada. Você registra quem chegou, vê quem é a próxima
+          e acompanha cada atendimento até o fim.
+        </p>
+
+        <!--
+          Dois botões. São links (<a>) com a aparência de botão: a
+          classe "botao" dá o formato e as variações "--principal" e
+          "--secundario" dão as cores. Eles levam a outras páginas.
+        -->
+        <div class="hero__acoes">
+          <a class="botao botao--principal" href="fila.html">Abrir a fila de hoje</a>
+          <a class="botao botao--secundario" href="historico.html">Ver histórico</a>
+        </div>
+      </section>
+
+      <!--
+        BLOCO 2: COMO FUNCIONA
+        Aqui a numeração faz sentido, porque os passos acontecem em
+        sequência. Por isso usamos <ol> (lista numerada). O CSS tira a
+        numeração automática (list-style: none) e nós escrevemos o
+        número no <span class="lista-texto__numero">, para poder
+        estilizá-lo em bronze.
+
+        <h3> é um título de nível 3: fica DENTRO da seção que tem um
+        <h2>. A ordem dos níveis (h1, h2, h3) ajuda leitores de tela.
+      -->
+      <section class="bloco" aria-labelledby="titulo-como-funciona">
+        <h2 class="bloco__titulo" id="titulo-como-funciona">Como funciona</h2>
+
+        <!-- "lista-texto--quatro" = 4 colunas no computador (veja o CSS). -->
+        <ol class="lista-texto lista-texto--quatro">
+          <li class="lista-texto__item">
+            <span class="lista-texto__numero">1</span>
+            <h3 class="lista-texto__titulo">Registre a chegada</h3>
+            <p class="lista-texto__texto">Digite o nome da cliente. O horário de chegada é anotado automaticamente.</p>
+          </li>
+
+          <li class="lista-texto__item">
+            <span class="lista-texto__numero">2</span>
+            <h3 class="lista-texto__titulo">Veja a próxima</h3>
+            <p class="lista-texto__texto">Quem chegou primeiro aparece em destaque, e cada cliente mostra a espera estimada.</p>
+          </li>
+
+          <li class="lista-texto__item">
+            <span class="lista-texto__numero">3</span>
+            <h3 class="lista-texto__titulo">Atenda</h3>
+            <p class="lista-texto__texto">Inicie o atendimento e conclua quando terminar. O status acompanha cada etapa.</p>
+          </li>
+
+          <li class="lista-texto__item">
+            <span class="lista-texto__numero">4</span>
+            <h3 class="lista-texto__titulo">Consulte o histórico</h3>
+            <p class="lista-texto__texto">Os atendimentos concluídos ficam guardados por dia e podem ser revistos depois.</p>
+          </li>
+        </ol>
+      </section>
+
+      <!--
+        BLOCO 3: O QUE VOCÊ ENCONTRA
+        Aqui NÃO há ordem entre os itens, então usamos <ul> (lista sem
+        numeração) e não colocamos número. A classe "lista-texto" é a
+        mesma do bloco anterior: no computador ela fica em 2 colunas.
+      -->
+      <section class="bloco" aria-labelledby="titulo-recursos">
+        <h2 class="bloco__titulo" id="titulo-recursos">O que você encontra</h2>
+
+        <ul class="lista-texto">
+          <li class="lista-texto__item">
+            <h3 class="lista-texto__titulo">Fila por ordem de chegada</h3>
+            <p class="lista-texto__texto">Ninguém passa na frente: a posição de cada cliente segue o horário em que ela chegou.</p>
+          </li>
+
+          <li class="lista-texto__item">
+            <h3 class="lista-texto__titulo">Resumo do dia</h3>
+            <p class="lista-texto__texto">Contadores mostram quantas clientes aguardam, quantas estão em atendimento e quantas já foram atendidas.</p>
+          </li>
+
+          <li class="lista-texto__item">
+            <h3 class="lista-texto__titulo">Espera estimada</h3>
+            <p class="lista-texto__texto">Com base na duração média do atendimento, cada cliente vê quanto tempo deve esperar.</p>
+          </li>
+
+          <li class="lista-texto__item">
+            <h3 class="lista-texto__titulo">Funciona em qualquer tela</h3>
+            <p class="lista-texto__texto">O layout se adapta ao computador, ao tablet e ao celular.</p>
+          </li>
+        </ul>
+      </section>
+
+    </div>
+  </main>
+
+  <!--
+    ================================================================
+    RODAPÉ
+    Igual ao das outras páginas: avisa que os dados ficam só neste
+    navegador.
+    ================================================================
+  -->
+  <footer class="rodape">
+    <div class="container">
+      <p>Os dados ficam salvos apenas neste navegador e não são sincronizados com outros aparelhos.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
